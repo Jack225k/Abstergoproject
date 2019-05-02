@@ -46,7 +46,5 @@ namespace WebApp_OpenIDConnect_DotNet.Models
         }
 
         public string FilePath { get; set; }
-
-        public HttpPostedFileBase file { get; set; }
     }
 }
