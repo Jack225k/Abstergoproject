@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApp_OpenIDConnect_DotNet.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mt-4">Students</h2>
+
+
+
+<p>
+    @Html.ActionLink("Create New", "New")
+</p>
+
+@{if (ViewBag.Request.Equals("invalid"))
+    {
+        <p>Your search parameters did not yeild any results.</p>
+    }
+    else
+    {
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink("" + @Html.DisplayFor(modelItem => item.StudentNumber) + "", "Edit", new { id = item.Id })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+}
+
